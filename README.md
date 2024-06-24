@@ -9,13 +9,15 @@
 - Elixir 1.16 以降
 
 ## 準備
+
 ```sh
-$ git clone git@github.com:b5g-ex/simple_echo.git
-$ cd simple_echo
-$ mix deps.get
+git clone git@github.com:b5g-ex/simple_echo.git
+cd simple_echo
+mix deps.get
 ```
 
 ## 起動
+
 ```sh
 # 4444 port で HTTP Server を起動
 mix run --no-halt
