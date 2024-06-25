@@ -32,6 +32,7 @@ defmodule SimpleEcho.ZenohexPingPong do
     case Zenohex.Subscriber.recv_timeout(state.subscriber) do
       {:ok, sample} ->
         Zenohex.Publisher.put(state.publisher, sample.value)
+        Logger.debug(inspect(sample.value))
         send(self(), :loop)
 
       {:error, :timeout} ->
