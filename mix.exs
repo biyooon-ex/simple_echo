@@ -24,12 +24,7 @@ defmodule SimpleEcho.MixProject do
     [
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.4"},
-      # {:zenohex, "~> 0.2.0"},
-      {:zenohex,
-       git: "https://github.com/biyooon-ex/zenohex",
-       branch: "bump_to_zenoh_v0.11.0",
-       override: true},
-      {:rustler, ">= 0.0.0", optional: true}
+      {:zenohex, "~> 0.3.0"}
     ]
   end
 end
