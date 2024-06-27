@@ -1,8 +1,9 @@
 defmodule SimpleEcho.MyPlug do
   use Plug.Router
+  require Logger
 
-  plug :match
-  plug :dispatch
+  plug(:match)
+  plug(:dispatch)
 
   get "/" do
     conn
@@ -21,6 +22,7 @@ defmodule SimpleEcho.MyPlug do
   end
 
   defp handle_request({:ok, body, _conn}, conn) do
+    Logger.debug(inspect(body))
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(200, body)

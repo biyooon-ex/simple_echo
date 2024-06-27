@@ -10,7 +10,8 @@ defmodule SimpleEcho.Application do
     children = [
       # Starts a worker by calling: SimpleEcho.Worker.start_link(arg)
       # {SimpleEcho.Worker, arg}
-      {Plug.Cowboy, plug: SimpleEcho.MyPlug, scheme: :http, port: 4444}
+      {Plug.Cowboy, plug: SimpleEcho.MyPlug, scheme: :http, port: 4444},
+      {SimpleEcho.ZenohexPingPong, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
