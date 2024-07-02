@@ -25,7 +25,8 @@ defmodule SimpleEcho.MixProject do
     [
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.4"},
-      {:zenohex, "~> 0.3.0"}
+      {:zenohex, "~> 0.3.0"},
+      {:tortoise311, "~> 0.11"}
     ]
   end
 
