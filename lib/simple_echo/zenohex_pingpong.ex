@@ -2,21 +2,24 @@ defmodule SimpleEcho.ZenohexPingPong do
   use GenServer
   require Logger
 
-  @default_ping_key "demo/zcam/ping"
-  @default_pong_key "demo/zcam/pong"
+  @ping_key "demo/zcam/ping/"
+  @pong_key "demo/zcam/pong/"
 
   def start_link(_args) do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)
   end
 
   def init(_args) do
+    # Set key names
+    default_server_type = System.get_env("SERVER_TYPE", "cloud")
+    ping_key = @ping_key <> default_server_type
+    pong_key = @pong_key <> default_server_type
+
     # Open Zenoh session and declare subscriber
     {:ok, session} = Zenohex.open()
-    ping_key = System.get_env("PING_KEY", @default_ping_key)
     {:ok, subscriber} = Zenohex.Session.declare_subscriber(session, ping_key)
 
     # Declare publisher with created Zenoh session
-    pong_key = System.get_env("PONG_KEY", @default_pong_key)
     {:ok, publisher} = Zenohex.Session.declare_publisher(session, pong_key)
 
     state = %{subscriber: subscriber, publisher: publisher}
