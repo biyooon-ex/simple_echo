@@ -11,7 +11,8 @@ defmodule SimpleEcho.Application do
       # Starts a worker by calling: SimpleEcho.Worker.start_link(arg)
       # {SimpleEcho.Worker, arg}
       {Plug.Cowboy, plug: SimpleEcho.MyPlug, scheme: :http, port: 4444},
-      {SimpleEcho.ZenohexPingPong, []}
+      {SimpleEcho.ZenohexPingPong, []},
+      {SimpleEcho.MqttPingPong, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
