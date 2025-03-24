@@ -23,6 +23,7 @@ defmodule SimpleEcho.MyPlug do
 
   defp handle_request({:ok, body, _conn}, conn) do
     Logger.debug(inspect(body))
+
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(200, body)
